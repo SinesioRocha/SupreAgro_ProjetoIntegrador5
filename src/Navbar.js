@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function CollapsibleExample() {
   return (
+    <div>
     <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
       <Container>
         <Navbar.Brand href="#home"><img
@@ -19,11 +20,11 @@ function CollapsibleExample() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Clientes</Nav.Link>
-            <Nav.Link href="#pricing">Colaboradores</Nav.Link>
-            <Nav.Link href="#pricing">Produtos</Nav.Link>
+            <Nav.Link href="/ListaCliente">Clientes</Nav.Link>
+            <Nav.Link href="/listaColaborador">Colaboradores</Nav.Link>
+            <Nav.Link href="/ListaProduto">Produtos</Nav.Link>
             <NavDropdown title="Agenda" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Agenda Do Dia</NavDropdown.Item>
+              <NavDropdown.Item href="/Agenda">Agenda Do Dia</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Novo Agendamento</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Pedido" id="collasible-nav-dropdown">
@@ -34,6 +35,7 @@ function CollapsibleExample() {
           </Navbar.Collapse>
       </Container>
     </Navbar>
+    </div>
   );
 }
 
