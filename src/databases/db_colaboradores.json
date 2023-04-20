@@ -1,0 +1,18 @@
+{
+    "colaborador":[
+        {
+            "id":1,
+            "nome": "Sinesio",
+            "telfone": "18996426044",
+            "endereco": "Rua Pernambuco, 35",
+            "Perfil": 1
+        },
+        {
+            "id":2,
+            "nome": "Caio",
+            "telfone": "18996426044",
+            "endereco": "Rua Pernambuco, 35",
+            "Perfil": 2
+        }
+    ]
+}

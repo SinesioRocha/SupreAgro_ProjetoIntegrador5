@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import { PencilSquare, Trash3, PlusSquare } from 'react-bootstrap-icons';
+
 
 export function ListaColaborador(){
     
@@ -28,9 +31,19 @@ export function ListaColaborador(){
         obterDados();
     }, [])
 
+    const chamarEditar = () => {
+        console.log("Clicou em Editar")
+    }
+
+    const chamarExclusao = () => {
+        console.log("Clicou em Excluir")
+      }
+
     return(
     
-        <div className="col-md-8 mx-auto">
+        <div className="col-md-8 mx-auto ">
+            <br></br>
+            <Button variant="secondary" className="mb-3 ml-auto" href="/NovoColaborador"><PlusSquare/> Novo Colaborador</Button>
             <Table bordered hover size="sm" responsive="xl"  className="text-center">
                 <thead className="thead-dark">
                     <tr>
@@ -39,6 +52,7 @@ export function ListaColaborador(){
                     <th>Telefone</th>
                     <th>Endereço</th>
                     <th>Perfil</th>
+                    <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +63,10 @@ export function ListaColaborador(){
                         <td>{user.telfone}</td>
                         <td>{user.endereco}</td>
                         <td>{user.Perfil}</td>
+                        <td>
+                            <Button variant="secondary" onClick={() => chamarEditar(user.id)}><PencilSquare/></Button>{' '}
+                            <Button variant="secondary" onClick={() => chamarExclusao(user.id)}><Trash3></Trash3></Button>
+                        </td>
                     </tr>
                     ))}
                 </tbody>
