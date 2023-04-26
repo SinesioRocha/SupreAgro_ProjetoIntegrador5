@@ -1,28 +1,74 @@
-import { useState } from "react";
-import axios from "axios";
-import { Form, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useRef } from "react";
+import 'primeicons/primeicons.css';
+import React, { Component } from 'react';
+import { InputText } from 'primereact/inputtext';
+import { InputMask } from 'primereact/inputmask';
+import { Dropdown } from 'primereact/dropdown';
+import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
 
 
-export function NovoColaborador(){
+export function NovoColaborador(){  
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
+    const options = [
+        {
+          label: 'Administrador',
+          value: 'Administrador 1',
+        },
+        {
+          label: 'Vendedor',
+          value: 'Vendedor',
+        },
+        {
+            label: 'Gerente',
+            value: 'Gerente',  
+        }
+    ];
+    const toast = useRef(null);
+
+
+
     return(
-        <div className="col-md-5 mx-auto ">
-            <p className="text-center mt-3"><h3>Cadastro de Colaborador</h3></p>
-            <form>
-                <Form.Group controlId="formNome">
-                    <Form.Label>Nome completo</Form.Label>
-                    <Form.Control type="text" placeholder="Digite seu nome" />
-                </Form.Group>
-                <Form.Group controlId="formTelefone">
-                    <Form.Label>Telefone</Form.Label>
-                    <Form.Control type="text" placeholder="(xx) xxxxx-xxxx" />
-                </Form.Group>
-                <Form.Group controlId="formEndreco">
-                    <Form.Label>Endereço</Form.Label>
-                    <Form.Control type="text" placeholder="Rua Xxxxx, Nº xx" />
-                </Form.Group>
-                <Button variant="secondary" className="mb-3 ml-auto mt-2" type="submit">Salvar</Button>
-            </form>
+        <div className="card flex justify-content-center mt-4" >
+            <Toast ref={toast}></Toast>
+            <div className="p-col-4 p-md-4">
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <i className="pi pi-user"></i>
+                    </span>
+                    <InputText placeholder="Nome" />
+                </div>
+            </div>
+            <div  className="p-col-4 p-md-4">
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <i className="pi pi-phone"></i>
+                    </span>
+                    <InputMask id="Telefone" mask="(999) 99999-9999" placeholder="(999) 99999-9999" ></InputMask>
+                </div>
+            </div>
+            <div  className="p-col-4 p-md-4">
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <i className="pi pi-building"></i>
+                    </span>
+                    <InputText placeholder="Endreço:" />
+                </div>
+            </div>
+            <div className="p-col-4 p-md-4">
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <i className="pi pi-user"></i>
+                    </span>
+                    <Dropdown value={selectedCategory} onChange={(e) => setSelectedCategory(e.value)} options={options} optionLabel="label" 
+                        placeholder="Select Perfil" className="w-full md:w-14rem" />
+                </div>
+            </div>
+            <div className=" flex flex-wrap justify-content-center gap-3 ml-auto">
+                <Button label="Salvar" raised/>
+                <Button label="Cancelar"  raised />
+            </div>
         </div>
     )
 }

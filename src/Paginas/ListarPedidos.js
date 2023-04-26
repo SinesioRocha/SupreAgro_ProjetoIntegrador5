@@ -6,19 +6,19 @@ import { Column } from 'primereact/column';
 import React, { Component } from 'react';
 import { Button } from 'primereact/button';
 
-export function ListaProduto(){
+export function ListaPedidos(){
     const navigare = useNavigate();
 
-    const [produto, setProduto] = useState([]);
+    const [pedidos, setPedidos] = useState([]);
 
     const obterDados = () =>{
         const api = axios.create({
             baseURL: "http://localhost:3001"
         });
-        api.get("/produtos")
+        api.get("/pedidos")
             .then((response)=>{
                 console.log(response.data)
-                setProduto(response.data)
+                setPedidos(response.data)
             }
         )
         .catch((err) =>{
@@ -28,20 +28,22 @@ export function ListaProduto(){
     useEffect(()=>{
         obterDados();
     },[])
+
     return(
         <div>
         <div className="datatable-responsive-demo">
             <div className="card  mt-4">
-                <DataTable value={produto} paginator rows={10} header={ 
+                <DataTable value={pedidos} paginator rows={10} header={ 
                                     <div className="d-flex align-items-center justify-content-between">
-                                         <h4    >Lista dos Produtos</h4>
-                                         <Button label="New" icon="pi pi-plus" className="btn btn-primary p-ml-auto" />
+                                         <h4>Lista de Pedidos</h4>
+                                         <Button label="Novo" icon="pi pi-plus"  className="btn btn-primary p-ml-auto" href="/NovoPedido"/>
                                     </div>
                             }>
                     <Column field="id" header="#"/>
-                    <Column field="nome" header="Nome"/>
-                    <Column field="unMedida" header="UnMedida"/>
-                    <Column field="valor" header="Valor" />
+                    <Column field="idCliente" header="Cliente"/>
+                    <Column field="idColaborador" header="Colaborador"/>
+                    <Column field="dataVenda" header="Data" />
+                    <Column field="valorTotal" header="Total (R$)" />
                 </DataTable>
             </div>
         </div>

@@ -1,40 +1,64 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Menubar } from 'primereact/menubar';
+import { useHistory } from 'react-router-dom';
+import './global.css';
 
 function CollapsibleExample() {
+  const items = [
+    {
+      label: 'Clientes',
+      icon: 'pi pi-users',
+      command:()=>{
+        window.location.href='http://localhost:3000/Paginas/ListaCliente'}
+    },
+    {
+      label: 'Colaboradores',
+      icon: 'pi pi-user-plus',
+      items: [
+        { label: 'Consultar', icon: 'pi pi-file', command:()=>{
+          window.location.href='http://localhost:3000/Paginas/ListaColaborador'}
+        },
+        { label: 'Perfils', icon: 'pi pi-id-card' },
+        { label: 'Veiculos', icon: 'pi pi-car' },
+      ]
+    },
+    {
+      label: 'Produtos',
+      icon: 'pi pi-tags',
+      command:()=>{
+        window.location.href='http://localhost:3000/Paginas/ListaProduto'}
+    },
+    {
+      label: 'Agenda',
+      icon: 'pi pi-book',
+      items: [
+        { label: 'Consultar', icon: 'pi pi-file', command:()=>{
+          window.location.href='http://localhost:3000/Paginas/Agenda'}
+        },
+        { label: 'Visitas', icon: 'pi pi-briefcase' },
+        { label: 'Relatorios', icon: 'pi pi-tablet' },
+      ]
+    },
+    {
+      label: 'Pedidos',
+      icon: 'pi pi-shopping-bag',
+      command:()=>{
+        window.location.href='http://localhost:3000/Paginas/Pedidos'}
+    },
+    {
+      label: 'Rotas',
+      icon: 'pi pi-map'
+    }
+  ];
+  const onMenuClick = (event) => {
+    console.log(event.item);
+  };
+
+  const start = <img alt="logo" src="http://supreagro.com.br/wp-content/uploads/2020/08/cropped-Logo-1-Color-2-2048x1030.png" onError={(e) => e.target.src='http://supreagro.com.br/wp-content/uploads/2020/08/cropped-Logo-1-Color-2-2048x1030.png'} height="40" className="p-mr-2"></img>;
   return (
     <div>
-    <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
-      <Container>
-        <Navbar.Brand href="#home"><img
-            src="http://supreagro.com.br/wp-content/uploads/2020/08/cropped-Logo-1-Color-2-2048x1030.png"
-            width="150vh"
-            style={{
-              marginTop: "10px",
-              marginBottom: "10px",
-              marginRight: "20px"
-            }}
-          /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/ListaCliente">Clientes</Nav.Link>
-            <Nav.Link href="/listaColaborador">Colaboradores</Nav.Link>
-            <Nav.Link href="/ListaProduto">Produtos</Nav.Link>
-            <NavDropdown title="Agenda" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/Agenda">Agenda Do Dia</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Novo Agendamento</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Pedido" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Lista Pedido</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Novo Pedido</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    
+          <Menubar model={items}start={start}  onItemSelect={onMenuClick}/>
+
     </div>
   );
 }

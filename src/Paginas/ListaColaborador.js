@@ -1,15 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Table from 'react-bootstrap/Table';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
-import { PencilSquare, Trash3, PlusSquare } from 'react-bootstrap-icons';
-
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import React, { Component } from 'react';
+import { Button } from 'primereact/button';
 
 export function ListaColaborador(){
     
-    const navigate = useNavigate();
+    const navigare = useNavigate();
 
     const [colaborador, setColaborador] = useState([]);
 
@@ -17,60 +16,43 @@ export function ListaColaborador(){
         const api = axios.create({
             baseURL: "http://localhost:3001"
         });
-        api.get("/colaborador")
-            .then((response) => {
+        api.get("/colaboradores")
+            .then((response)=>{
                 console.log(response.data)
                 setColaborador(response.data)
             }
         )
-        .catch((err) => {
+        .catch((err) =>{
             console.error("Erro ao Listar");
         });
     }
-    useEffect(() => {
+    useEffect(()=>{
         obterDados();
-    }, [])
-
-    const chamarEditar = () => {
-        console.log("Clicou em Editar")
-    }
-
-    const chamarExclusao = () => {
-        console.log("Clicou em Excluir")
-      }
-
+    },[])
+//Interface
+  
     return(
     
-        <div className="col-md-8 mx-auto ">
-            <br></br>
-            <Button variant="secondary" className="mb-3 ml-auto" href="/NovoColaborador"><PlusSquare/> Novo Colaborador</Button>
-            <Table bordered hover size="sm" responsive="xl"  className="text-center">
-                <thead className="thead-dark">
-                    <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Endereço</th>
-                    <th>Perfil</th>
-                    <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {colaborador.map(user => (
-                    <tr key={user.id}>
-                        <td>{user.id}</td>
-                        <td>{user.nome}</td>
-                        <td>{user.telfone}</td>
-                        <td>{user.endereco}</td>
-                        <td>{user.Perfil}</td>
-                        <td>
-                            <Button variant="secondary" onClick={() => chamarEditar(user.id)}><PencilSquare/></Button>{' '}
-                            <Button variant="secondary" onClick={() => chamarExclusao(user.id)}><Trash3></Trash3></Button>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
-            </Table>
+        <div>
+            <div className="datatable-responsive-demo">
+                
+                <div className="card  mt-4  ">
+                    <DataTable value={colaborador} paginator rows={10} showGridlines  header={ 
+                                        <div className="d-flex align-items-center justify-content-between">
+                                             <h4    >Lista dos Colaboradores</h4>
+                                             <Link to="/Paginas/NovoColaborador">                                          
+                                             <Button label="Novo" icon="pi pi-plus" className="btn btn-primary p-ml-auto" href="/NovoColaborador"/>
+                                             </Link>
+                                        </div>
+                                }>
+                        <Column field="id" header="#"/>
+                        <Column field="nome" header="Nome"/>
+                        <Column field="telfone" header="Telefone"/>
+                        <Column field="endereco" header="Endereço" />
+                        <Column field="idPerfil" header="Perfil" />
+                    </DataTable>
+                </div>
+            </div>
         </div>
     );
 }
