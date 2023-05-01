@@ -34,7 +34,7 @@ export function ListaProduto(){
             <div className="card  mt-4">
                 <DataTable value={produto} paginator rows={10} header={ 
                                     <div className="d-flex align-items-center justify-content-between">
-                                         <h4    >Lista dos Produtos</h4>
+                                         <h4>Lista dos Produtos</h4>
                                          <Button label="New" icon="pi pi-plus" className="btn btn-primary p-ml-auto" />
                                     </div>
                             }>

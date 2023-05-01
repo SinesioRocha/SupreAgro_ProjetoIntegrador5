@@ -14,7 +14,7 @@ export function NovoColaborador(){
     const options = [
         {
           label: 'Administrador',
-          value: 'Administrador 1',
+          value: 'Administrador',
         },
         {
           label: 'Vendedor',

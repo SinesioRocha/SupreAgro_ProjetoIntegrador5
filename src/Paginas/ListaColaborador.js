@@ -39,7 +39,7 @@ export function ListaColaborador(){
                 <div className="card  mt-4  ">
                     <DataTable value={colaborador} paginator rows={10} showGridlines  header={ 
                                         <div className="d-flex align-items-center justify-content-between">
-                                             <h4    >Lista dos Colaboradores</h4>
+                                             <h4>Lista dos Colaboradores</h4>
                                              <Link to="/Paginas/NovoColaborador">                                          
                                              <Button label="Novo" icon="pi pi-plus" className="btn btn-primary p-ml-auto" href="/NovoColaborador"/>
                                              </Link>

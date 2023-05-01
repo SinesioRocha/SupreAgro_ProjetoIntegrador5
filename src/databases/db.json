@@ -1,112 +1,149 @@
 {
-    "perfil":[
-        {
-            "id":1,
-            "descicao": "Administrativo"
-        },
-        {
-            "id":2,
-            "descicao": "Vendedor"
-        },
-        {
-            "id":3,
-            "descicao": "Gerente"
+  "perfil": [
+    {
+      "id": 1,
+      "descicao": "Administrativo"
+    },
+    {
+      "id": 2,
+      "descicao": "Vendedor"
+    },
+    {
+      "id": 3,
+      "descicao": "Gerente"
+    }
+  ],
+  "veiculos": [
+    {
+      "id": 1,
+      "Marca": "Fiat",
+      "Modelo": "Strada",
+      "Ano": 2018,
+      "Cor": "Branca"
+    },
+    {
+      "id": 2,
+      "Marca": "Chevrolet",
+      "Modelo": "Montan",
+      "Ano": 2013,
+      "Cor": "Prata"
+    }
+  ],
+  "colaboradores": [
+    {
+      "id": 1,
+      "nome": "Sinesio",
+      "telfone": "18996426044",
+      "endereco": "Rua Pernambuco, 35",
+      "idPerfil": 1
+    },
+    {
+      "id": 2,
+      "nome": "Caio",
+      "telfone": "18996426044",
+      "endereco": "Rua Pernambuco, 35",
+      "idPerfil": 2
+    }
+  ],
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Matheus",
+      "telfone": "18996426044",
+      "endereco": {
+        "logradouro": "Fazenda Lagoinha",
+        "numero": "s/n",
+        "bairro": "Agua da Chuba",
+        "cidade": "Ourinhos",
+        "estado": "SP"
+      }
+    },
+    {
+      "id": 2,
+      "nome": "Flavio",
+      "telfone": "18996426044",
+      "endereco": {
+        "logradouro": "Fazenda São Luiz",
+        "numero": "s/n",
+        "bairro": "Agua Parada",
+        "cidade": "São Paulo",
+        "estado": "SP"
+      }
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Ancosar",
+      "unMedida": "L",
+      "valor": 100.5
+    },
+    {
+      "id": 2,
+      "nome": "NutriPlus",
+      "unMedida": "Gl 20",
+      "valor": 50
+    }
+  ],
+  "pedidos": [
+    {
+      "idCliente": {
+        "selectedOption": {
+          "id": 1,
+          "nome": "Sinesio",
+          "telfone": "18996426044",
+          "endereco": "Rua Pernambuco, 35",
+          "idPerfil": 1
         }
-    ],
-    "veiculos":[
-        {
-            "id":1,
-            "Marca": "Fiat",
-            "Modelo": "Strada",
-            "Ano": 2018,
-            "Cor": "Branca"
-        },
-        {
-            "id":2,
-            "Marca": "Chevrolet",
-            "Modelo": "Montan",
-            "Ano": 2013,
-            "Cor": "Prata"
+      },
+      "idColaborador": {
+        "selectedOption2": {
+          "id": 2,
+          "nome": "Flavio",
+          "telfone": "18996426044",
+          "endereco": {
+            "logradouro": "Fazenda São Luiz",
+            "numero": "s/n",
+            "bairro": "Agua Parada",
+            "cidade": "São Paulo",
+            "estado": "SP"
+          }
         }
-    ],
-    "colaboradores":[
-        {
-            "id":1,
-            "nome": "Sinesio",
-            "telfone": "18996426044",
-            "endereco": "Rua Pernambuco, 35",
-            "idPerfil": 1
-        },
-        {
-            "id":2,
-            "nome": "Caio",
-            "telfone": "18996426044",
-            "endereco": "Rua Pernambuco, 35",
-            "idPerfil": 2
-        }
-    ],
-    "clientes":[
-        {
+      },
+      "dataVenda": "2023-04-25T03:00:00.000Z",
+      "valorTotal": 201,
+      "produtos": {
+        "cart": [
+          {
             "id": 1,
-            "nome": "Matheus",
-            "telfone": "18996426044",
-            "endereco": {
-                "logradouro": "Fazenda Lagoinha",
-                "numero": "s/n",
-                "bairro": "Agua da Chuba",
-                "cidade": "Ourinhos",
-                "estado": "SP"
-              }
-        },
-        {
-            "id": 2,
-            "nome": "Flavio",
-            "telfone": "18996426044",
-            "endereco": {
-                "logradouro": "Fazenda São Luiz",
-                "numero": "s/n",
-                "bairro": "Agua Parada",
-                "cidade": "São Paulo",
-                "estado": "SP"
-              }
-        }
-    ],
-    "produtos":[
-        {
-            "id": 1,
-            "nome":"Ancosar",
+            "nome": "Ancosar",
             "unMedida": "L",
-            "valor": 100.50
-        }
-    ],
-    "pedidos":[
-        {
-            "id": 1,
-            "idCliente": 1,
-            "idColaborador": 2,
-            "dataVenda":"2023-04-31T13:00:00.000-03:00",
-            "valorTotal": 520.99
-        }
-    ],
-    "agendamentos":[
-        {
-            "id": 1,
-            "dataAgendada": "2023-04-20T10:00:00.000-03:00",
-            "idColaborador":1,
-            "idCliente":1
-        }
-    ],
-    "visita":[
-        {
-            "id": 1,
-            "idAgendamentos":1,
-            "dataVisita": "2023-04-20T11:30:00.000-03:00",
-            "status": "Realizada",
-            "relatorio":{
-                "fotos": "FOTO",
-                "comentario":"Na visita foi encontrado incios de praga Percevejos, foi indicado ao cliente aplicar o inseticida."
-            }
-        }
-    ]
-   
+            "valor": 100.5,
+            "quant": 2
+          }
+        ]
+      },
+      "id": 2
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": 1,
+      "dataAgendada": "2023-04-20T10:00:00.000-03:00",
+      "idColaborador": 1,
+      "idCliente": 1
+    }
+  ],
+  "visita": [
+    {
+      "id": 1,
+      "idAgendamentos": 1,
+      "dataVisita": "2023-04-20T11:30:00.000-03:00",
+      "status": "Realizada",
+      "relatorio": {
+        "fotos": "FOTO",
+        "comentario": "Na visita foi encontrado incios de praga Percevejos, foi indicado ao cliente aplicar o inseticida."
+      }
+    }
+  ]
 }
