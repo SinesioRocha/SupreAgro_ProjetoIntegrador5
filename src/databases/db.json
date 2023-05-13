@@ -29,22 +29,7 @@
       "Cor": "Prata"
     }
   ],
-  "colaboradores": [
-    {
-      "id": 1,
-      "nome": "Sinesio",
-      "telfone": "18996426044",
-      "endereco": "Rua Pernambuco, 35",
-      "idPerfil": 1
-    },
-    {
-      "id": 2,
-      "nome": "Caio",
-      "telfone": "18996426044",
-      "endereco": "Rua Pernambuco, 35",
-      "idPerfil": 2
-    }
-  ],
+  "colaboradores": [],
   "clientes": [
     {
       "id": 1,
@@ -85,47 +70,7 @@
       "valor": 50
     }
   ],
-  "pedidos": [
-    {
-      "idCliente": {
-        "selectedOption": {
-          "id": 1,
-          "nome": "Sinesio",
-          "telfone": "18996426044",
-          "endereco": "Rua Pernambuco, 35",
-          "idPerfil": 1
-        }
-      },
-      "idColaborador": {
-        "selectedOption2": {
-          "id": 2,
-          "nome": "Flavio",
-          "telfone": "18996426044",
-          "endereco": {
-            "logradouro": "Fazenda São Luiz",
-            "numero": "s/n",
-            "bairro": "Agua Parada",
-            "cidade": "São Paulo",
-            "estado": "SP"
-          }
-        }
-      },
-      "dataVenda": "2023-04-25T03:00:00.000Z",
-      "valorTotal": 201,
-      "produtos": {
-        "cart": [
-          {
-            "id": 1,
-            "nome": "Ancosar",
-            "unMedida": "L",
-            "valor": 100.5,
-            "quant": 2
-          }
-        ]
-      },
-      "id": 2
-    }
-  ],
+  "pedidos": [],
   "agendamentos": [
     {
       "id": 1,

@@ -1,14 +1,18 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import React, { Component } from 'react';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
+import { ConfirmDialog } from 'primereact/confirmdialog'; // For <ConfirmDialog /> component
+import { confirmDialog } from 'primereact/confirmdialog'; // For confirmDialog method
+import { Toast } from 'primereact/toast';
+     
+
 
 export function ListaPedidos(){
-    const navigare = useNavigate();
+    const navigate = useNavigate();
     const [pedidos, setPedidos] = useState([]);
 
     const obterDados = () =>{
@@ -38,8 +42,8 @@ export function ListaPedidos(){
       const mostrarBotoes = (pedido) => {
         return(
             <div className="flex justify-content-center">
-                <Button icon="pi pi-file-edit" aria-label="Filter"  style={{marginRight: '10px'}}/> 
-                <Button icon="pi pi-times" severity="danger" className="p-mr-4" style={{marginRight: '10px'}}/>
+                <Button icon="pi pi-file-edit" aria-label="Filter"  style={{marginRight: '10px'}} onClick={() => navigate(`/Paginas/EditarPedidos/${pedido.id}`)}/> 
+                <Button icon="pi pi-times" severity="danger" className="p-mr-4" style={{marginRight: '10px'}} onClick={() => deletarPedido(pedido)}/>
                 <Button icon="pi pi-inbox" severity="success" aria-label="Search" style={{marginRight: '10px'}} onClick={() => mostrarProdutos(pedido)}/>
             </div>
         )
@@ -58,9 +62,39 @@ export function ListaPedidos(){
           .catch((error) => console.log(error));
       };
 
+//Botão de excluir e função
+
+    const toast = useRef(null);
+    const accept = () => {
+        toast.current.show({ severity: 'info', summary: 'Confirmou', detail: 'Você Aceitou!', life: 3000 });
+        window.location.reload(); 
+    }
+
+    const reject = () => {
+        toast.current.show({ severity: 'warn', summary: 'Rejeitou', detail: 'Você Rejeitou!', life: 3000 });
+    }
+    const deletarPedido = (pedido) => {
+        confirmDialog({
+            message: 'Deseja excluir este registro?',
+            header: 'Confirmação de Exclusão',
+            icon: 'pi pi-info-circle',
+            acceptClassName: 'p-button-danger',
+            accept,
+            reject
+        });
+        axios.delete(`http://localhost:3001/pedidos/${pedido.id}`)
+            .then(response => {
+                console.log(response.data); 
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
     return(
         <div>
             <div className="datatable-responsive-demo">
+                <ConfirmDialog />
+                <Toast ref={toast} />
                 <Dialog header="Lista de Produtos" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
                     <DataTable value={produtosPedido} paginator rows={10}>
                         <Column field="nome" header="Produto" />
@@ -77,8 +111,8 @@ export function ListaPedidos(){
                                         </div>
                                 }>
                         <Column field="id" header="#"/>
-                        <Column field="idCliente.selectedOption.nome" header="Cliente"/>
-                        <Column field="idColaborador.selectedOption2.nome" header="Colaborador"/>
+                        <Column field="idCliente.nome" header="Cliente"/>
+                        <Column field="idColaborador.nome" header="Colaborador" />
                         <Column field="dataVenda" header="Data" body={(rowData) => formatDate(rowData.dataVenda)}/>
                         <Column field="valorTotal" header="Total (R$)" />
                         <Column header="Ações" body={mostrarBotoes}/>

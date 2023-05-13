@@ -74,8 +74,8 @@ export function NovoPedido(props){
         //inserindo dados
 
         api.post("http://localhost:3001/pedidos", {
-            idCliente: {selectedOption},
-            idColaborador: {selectedOption2},
+            idCliente: selectedOption2,
+            idColaborador: selectedOption,
             dataVenda: selectedDate,
             valorTotal: valorTotal,
             produtos: {cart},
@@ -105,8 +105,10 @@ export function NovoPedido(props){
         { field: 'unMedida', header: 'UnMedida'},   
         { field: 'valor', header: 'Valor(R$)' },
         { header: 'Quantidade', body: (produto) =>(
-            <InputNumber value={produto.quant} onValueChange={(e) => produto.quant = e.value} showButtons buttonLayout="vertical" style={{ width: '4rem' }} 
-            decrementButtonClassName="p-button-success" incrementButtonClassName="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <InputNumber value={produto.quant} onValueChange={(e) => produto.quant = e.value} showButtons buttonLayout="vertical" style={{ width: '4rem'}} 
+                decrementButtonClassName="p-button-success" incrementButtonClassName="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" />
+            </div>
         )},
         { header: 'Ações',body: (produto) => (
             <Button label="Adicionar" onClick={() => handleAddToCart(produto)} raised icon="pi pi-plus"/>
@@ -138,7 +140,7 @@ export function NovoPedido(props){
                         <i className="pi pi-user"></i>
                     </span>
                     <Dropdown value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} options={colaborador} optionLabel="nome" 
-                    placeholder="Selecione o Colaborador" className="w-full md:w-14rem" />
+                    placeholder="Selecione o Colaborador" className="w-full md:w-14rem" required />
                 </div>
             </div>
             <div className="p-col-4 p-md-4">
@@ -148,7 +150,7 @@ export function NovoPedido(props){
                         <i className="pi pi-users"></i>
                     </span>
                     <Dropdown value={selectedOption2} onChange={(e) => setSelectedOption2(e.target.value)} options={clientes} optionLabel="nome" 
-                    placeholder="Selecione o Colaborador" className="w-full md:w-14rem" />
+                    placeholder="Selecione o Colaborador" className="w-full md:w-14rem" required/>
                 </div>
             </div>
             <div className="p-col-4 p-md-4 calendar-wrapper">
@@ -157,7 +159,7 @@ export function NovoPedido(props){
                     <span className="p-inputgroup-addon">
                         <i className="pi pi-calendar-plus"></i>
                     </span>
-                    <Calendar dateFormat="dd/mm/yy" id="basic" value={selectedDate} onChange={(e) => setSelectedDate(e.value)} name="dataVenda"/>
+                    <Calendar dateFormat="dd/mm/yy" id="basic" value={selectedDate} onChange={(e) => setSelectedDate(e.value)} name="dataVenda" required/>
                 </div>
             </div>
 

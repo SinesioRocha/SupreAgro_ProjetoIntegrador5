@@ -11,6 +11,7 @@ import 'primereact/resources/themes/fluent-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import { ListaColaborador } from './Paginas/ListaColaborador.js';
+import { EditarPedidos } from './Paginas/EditarPedidos.js';
 
 
 
@@ -35,6 +36,8 @@ function App() {
           <Route path='/Paginas/NovoColaborador' element={<NovoColaborador/>}/>
 
           <Route path='/Paginas/NovoPedido' element={<NovoPedido/>}/>
+
+          <Route path='/Paginas/EditarPedidos/:id' element={<EditarPedidos/>}/>
         </Routes>
       </BrowserRouter>
     </div>
