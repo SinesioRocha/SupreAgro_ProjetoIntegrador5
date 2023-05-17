@@ -17,7 +17,6 @@ function CollapsibleExample() {
         { label: 'Consultar', icon: 'pi pi-file', command:()=>{
           window.location.href='http://localhost:3000/Paginas/ListaColaborador'}
         },
-        { label: 'Perfils', icon: 'pi pi-id-card' },
         { label: 'Veiculos', icon: 'pi pi-car' },
       ]
     },
@@ -34,7 +33,8 @@ function CollapsibleExample() {
         { label: 'Consultar', icon: 'pi pi-file', command:()=>{
           window.location.href='http://localhost:3000/Paginas/Agenda'}
         },
-        { label: 'Visitas', icon: 'pi pi-briefcase' },
+        { label: 'Visitas', icon: 'pi pi-briefcase', command:()=>{
+          window.location.href='http://localhost:3000/Paginas/ListarVisitas'} },
         { label: 'Relatorios', icon: 'pi pi-tablet' },
       ]
     },

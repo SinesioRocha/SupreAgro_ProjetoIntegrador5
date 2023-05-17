@@ -1,18 +1,4 @@
 {
-  "perfil": [
-    {
-      "id": 1,
-      "descicao": "Administrativo"
-    },
-    {
-      "id": 2,
-      "descicao": "Vendedor"
-    },
-    {
-      "id": 3,
-      "descicao": "Gerente"
-    }
-  ],
   "veiculos": [
     {
       "id": 1,
@@ -29,39 +15,60 @@
       "Cor": "Prata"
     }
   ],
-  "colaboradores": [],
-  "clientes": [
+  "colaboradores": [
     {
-      "id": 1,
-      "nome": "Matheus",
-      "telfone": "18996426044",
-      "endereco": {
-        "logradouro": "Fazenda Lagoinha",
-        "numero": "s/n",
-        "bairro": "Agua da Chuba",
-        "cidade": "Ourinhos",
-        "estado": "SP"
-      }
+      "nome": "Sinesio",
+      "telefone": "(018) 99642-6044",
+      "idPerfil": "Vendedor",
+      "id": 1
     },
     {
-      "id": 2,
-      "nome": "Flavio",
-      "telfone": "18996426044",
-      "endereco": {
-        "logradouro": "Fazenda São Luiz",
-        "numero": "s/n",
-        "bairro": "Agua Parada",
-        "cidade": "São Paulo",
-        "estado": "SP"
-      }
+      "nome": "Caio",
+      "telefone": "(018) 99778-8999",
+      "idPerfil": "Vendedor",
+      "id": 2
+    },
+    {
+      "nome": "Cristiano",
+      "telefone": "(018) 99242-6004",
+      "idPerfil": "Gerente",
+      "id": 3
+    }
+  ],
+  "clientes": [
+    {
+      "nome": "IVONE MARIA ",
+      "telefone": "(018) 99640-2222",
+      "cnpj": "22.222.222/2222-22",
+      "id": 3,
+      "nova-propriedade": [
+        {
+          "id": 1,
+          "logradouro": "Rua X",
+          "numero": 123,
+          "bairro": "Bairro Y",
+          "cidade": "Cidade Z",
+          "uf": "UF"
+        }
+      ]
+    }
+  ],
+  "enderecos": [
+    {
+      "logradouro": "Fazenda Lagoinha",
+      "numero": "s/n",
+      "bairro": "Agua da Chuba",
+      "cidade": "Ourinhos",
+      "uf": "SP",
+      "cliente": 3
     }
   ],
   "produtos": [
     {
-      "id": 1,
       "nome": "Ancosar",
       "unMedida": "L",
-      "valor": 100.5
+      "valor": 1050,
+      "id": 1
     },
     {
       "id": 2,
@@ -70,25 +77,189 @@
       "valor": 50
     }
   ],
-  "pedidos": [],
+  "pedidos": [
+    {
+      "idCliente": {
+        "nome": "IVONE MARIA ",
+        "telefone": "(018) 99640-2222",
+        "cnpj": "22.222.222/2222-22",
+        "id": 3,
+        "nova-propriedade": [
+          {
+            "id": 1,
+            "logradouro": "Rua X",
+            "numero": 123,
+            "bairro": "Bairro Y",
+            "cidade": "Cidade Z",
+            "uf": "UF"
+          }
+        ]
+      },
+      "idColaborador": {
+        "nome": "Caio",
+        "telefone": "(018) 99778-8999",
+        "idPerfil": "Vendedor",
+        "id": 2
+      },
+      "dataVenda": "2023-05-17T03:00:00.000Z",
+      "valorTotal": 3150,
+      "produtos": {
+        "cart": [
+          {
+            "nome": "Ancosar",
+            "unMedida": "L",
+            "valor": 1050,
+            "id": 1,
+            "quant": 3
+          }
+        ]
+      },
+      "id": 2
+    },
+    {
+      "idCliente": {
+        "nome": "IVONE MARIA ",
+        "telefone": "(018) 99640-2222",
+        "cnpj": "22.222.222/2222-22",
+        "id": 3,
+        "nova-propriedade": [
+          {
+            "id": 1,
+            "logradouro": "Rua X",
+            "numero": 123,
+            "bairro": "Bairro Y",
+            "cidade": "Cidade Z",
+            "uf": "UF"
+          }
+        ]
+      },
+      "idColaborador": {
+        "nome": "Cristiano",
+        "telefone": "(018) 99242-6004",
+        "idPerfil": "Gerente",
+        "id": 3
+      },
+      "dataVenda": "2023-05-17T03:00:00.000Z",
+      "valorTotal": 2150,
+      "produtos": {
+        "cart": [
+          {
+            "nome": "Ancosar",
+            "unMedida": "L",
+            "valor": 1050,
+            "id": 1,
+            "quant": 2
+          },
+          {
+            "id": 2,
+            "nome": "NutriPlus",
+            "unMedida": "Gl 20",
+            "valor": 50,
+            "quant": 1
+          }
+        ]
+      },
+      "id": 3
+    }
+  ],
   "agendamentos": [
     {
-      "id": 1,
-      "dataAgendada": "2023-04-20T10:00:00.000-03:00",
-      "idColaborador": 1,
-      "idCliente": 1
+      "idCliente": {
+        "nome": "IVONE MARIA ",
+        "telefone": "(018) 99640-2222",
+        "cnpj": "22.222.222/2222-22",
+        "id": 3,
+        "nova-propriedade": [
+          {
+            "id": 1,
+            "logradouro": "Rua X",
+            "numero": 123,
+            "bairro": "Bairro Y",
+            "cidade": "Cidade Z",
+            "uf": "UF"
+          }
+        ]
+      },
+      "idColaborador": {
+        "nome": "Sinesio",
+        "telefone": "(018) 99642-6044",
+        "idPerfil": "Vendedor",
+        "id": 1
+      },
+      "dataAgendada": "2023-06-01T03:00:00.000Z",
+      "id": 4
+    },
+    {
+      "idCliente": {
+        "nome": "IVONE MARIA ",
+        "telefone": "(018) 99640-2222",
+        "cnpj": "22.222.222/2222-22",
+        "id": 3,
+        "nova-propriedade": [
+          {
+            "id": 1,
+            "logradouro": "Rua X",
+            "numero": 123,
+            "bairro": "Bairro Y",
+            "cidade": "Cidade Z",
+            "uf": "UF"
+          }
+        ]
+      },
+      "idColaborador": {
+        "nome": "Sinesio",
+        "telefone": "(018) 99642-6044",
+        "idPerfil": "Vendedor",
+        "id": 1
+      },
+      "dataAgendada": "2023-05-17T03:00:00.000Z",
+      "id": 5
+    },
+    {
+      "idCliente": {
+        "nome": "IVONE MARIA ",
+        "telefone": "(018) 99640-2222",
+        "cnpj": "22.222.222/2222-22",
+        "id": 3,
+        "nova-propriedade": [
+          {
+            "id": 1,
+            "logradouro": "Rua X",
+            "numero": 123,
+            "bairro": "Bairro Y",
+            "cidade": "Cidade Z",
+            "uf": "UF"
+          }
+        ]
+      },
+      "idColaborador": {
+        "nome": "Caio",
+        "telefone": "(018) 99778-8999",
+        "idPerfil": "Vendedor",
+        "id": 2
+      },
+      "dataAgendada": "2023-05-31T03:00:00.000Z",
+      "id": 6
     }
   ],
   "visita": [
     {
-      "id": 1,
-      "idAgendamentos": 1,
-      "dataVisita": "2023-04-20T11:30:00.000-03:00",
-      "status": "Realizada",
-      "relatorio": {
-        "fotos": "FOTO",
-        "comentario": "Na visita foi encontrado incios de praga Percevejos, foi indicado ao cliente aplicar o inseticida."
-      }
+      "dataVisita": "2023-05-17T22:27:19.747Z",
+      "horaVisita": "2023-05-17T22:27:19.747Z",
+      "status": "Em Andamento",
+      "id": 3
+    },
+    {
+      "dataVisita": "2023-05-17T23:13:08.171Z",
+      "horaVisita": "2023-05-17T23:13:08.171Z",
+      "status": "Em Andamento",
+      "id": 4
+    },
+    {
+      "dataVisita": "2023-05-17T23:13:31.617Z",
+      "horaVisita": "2023-05-17T23:13:31.617Z",
+      "status": "Em Andamento",
+      "id": 5
     }
   ]
 }

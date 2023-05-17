@@ -2,33 +2,18 @@ import { useState, useRef } from "react";
 import 'primeicons/primeicons.css';
 import React, { Component } from 'react';
 import { InputText } from 'primereact/inputtext';
-import { InputMask } from 'primereact/inputmask';
-import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { Link, useNavigate } from "react-router-dom";
 import { Panel } from 'primereact/panel';
 import axios from 'axios';
+import { InputNumber } from 'primereact/inputnumber';
+import { useHistory } from 'react-router-dom';
 
-export function NovoColaborador(){  
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    const [nome, setNome] = useState();
-    const [telefone, setTelfone] = useState();
-
-    const options = [
-        {
-          label: 'Administrador',
-          value: 'Administrador',
-        },
-        {
-          label: 'Vendedor',
-          value: 'Vendedor',
-        },
-        {
-            label: 'Gerente',
-            value: 'Gerente',  
-        }
-    ];
+export function NovoProduto(){
+    const[nome, setNome] = useState();
+    const[unMedida, setUnMedida] = useState();
+    const[valor, setValor] = useState();
 
     const toast = useRef(null);//faz o alesta de salvo com sucesso
 
@@ -40,10 +25,10 @@ export function NovoColaborador(){
         })
         //inserindo dados
 
-        api.post(`http://localhost:3001/colaboradores`, {
+        api.post(`http://localhost:3001/produtos`, {
             nome,
-            telefone,
-            idPerfil:selectedCategory
+            unMedida,
+            valor
            
         }).then(() => {
             toast.current.show({ severity: 'success', summary: 'Mensagem de sucesso', detail: 'Salvo com sucesso!' });
@@ -52,10 +37,12 @@ export function NovoColaborador(){
         });
     }
 
+
+
     return(
-        <div>
+        <di>
             <Toast ref={toast}></Toast>
-            <Panel header="Cadastro Novo Colaborador" className="card flex justify-content-center mt-4" >
+            <Panel header="Cadastro Novo Produto" className="card flex justify-content-center mt-4" >
                 <div className="p-col-4 p-md-4">
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
@@ -67,27 +54,24 @@ export function NovoColaborador(){
                 <div  className="p-col-4 p-md-4">
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
-                            <i className="pi pi-phone"></i>
+                            Un
                         </span>
-                        <InputMask id="Telefone" mask="(999) 99999-9999" placeholder="(999) 99999-9999" value={telefone} onChange={(e) => setTelfone(e.target.value)}></InputMask>
-                    </div>
+                        <InputText placeholder="Unidade de Medida" value={unMedida} onChange={(e) => setUnMedida(e.target.value)}/>                    </div>
                 </div>
-                <div className="p-col-4 p-md-4">
+                <div  className="p-col-4 p-md-4">
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
-                            <i className="pi pi-align-justify"></i>
+                            R$
                         </span>
-                        <Dropdown value={selectedCategory} onChange={(e) => setSelectedCategory(e.value)} options={options} optionLabel="label" 
-                            placeholder="Selecione Perfil" className="w-full md:w-14rem" />
-                    </div>
+                        <InputNumber placeholder="Valor R$" value={valor} onValueChange={(e) => setValor(e.value)} minFractionDigits={2} maxFractionDigits={5} />                </div>
                 </div>
                 <div className=" flex flex-wrap justify-content-center gap-3 ml-auto">
                     <Button label="Salvar" raised onClick={()=> gravar(history)}/>
-                    <Link to="/Paginas/ListaColaborador"> 
+                    <Link to="/Paginas/ListaProduto"> 
                         <Button label="Cancelar"  raised className="buton-cancel"/>
                     </Link>
                 </div>
             </Panel>
-        </div>
+        </di>
     )
 }

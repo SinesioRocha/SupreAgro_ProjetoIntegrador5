@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { ConfirmDialog } from 'primereact/confirmdialog'; // For <ConfirmDialog /> component
-import { confirmDialog } from 'primereact/confirmdialog';
+import { confirmDialog } from 'primereact/confirmdialog'; // For confirmDialog method
 import { Toast } from 'primereact/toast';
      
 export function ListaColaborador(){
@@ -36,7 +36,7 @@ export function ListaColaborador(){
     const mostrarBotoes = (colaboradores) => {
         return(
             <div className="flex justify-content-center">
-                <Button icon="pi pi-file-edit" aria-label="Filter"  style={{marginRight: '10px'}} onClick={() => navigate(`/Paginas/EditarColaboradores/${colaboradores.id}`)}/> 
+                <Button icon="pi pi-file-edit" aria-label="Filter"  style={{marginRight: '10px'}} onClick={() => navigare(`/Paginas/EditarColaboradores/${colaboradores.id}`)}/> 
                 <Button icon="pi pi-times" severity="danger" className="p-mr-4" style={{marginRight: '10px'}} onClick={() => deletarColaborador(colaboradores)}/>
             </div>
         )

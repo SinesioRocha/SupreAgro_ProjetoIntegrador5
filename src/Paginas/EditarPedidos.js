@@ -19,10 +19,9 @@ export function EditarPedidos() {
     const [isLoading, setIsLoading] = useState(true);
     const [produtos, setProdutos] = useState([]);
     const [valorTotal, setValorTotal] = useState("");
+    
     const { id } = useParams();
     const toast = useRef(null);
-
-
 
     useEffect(() => {
       buscarDetalhes();
